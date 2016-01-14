@@ -9,10 +9,32 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet var image: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        let tmpImage = UIImage(named: "sample")
+        
+        let imageProc = ImageProcessor(image: tmpImage!)
+        imageProc.applyFilter(filterType: filter.brightness, intensity: 100)
+        
+        let imageProcMultipleFilters = ImageProcessor(image: tmpImage!)
+        imageProcMultipleFilters.applyFilters(filterTypes: (type: .grayscale, intensity: 80),(type: .contrast, intensity: 80))
+        
+        
+        let imageProcDefaultFilter2 = ImageProcessor(image: tmpImage!)
+        imageProcDefaultFilter2.applyFilter(filterType: filter.contrast)
+        
+        
+        let imageProcDefaultFilter = ImageProcessor(image: tmpImage!)
+        
+        image.image = imageProcDefaultFilter.applyFilter(filterType: .contrast)
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
