@@ -11,6 +11,21 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet var image: UIImageView!
 
+    @IBAction func imageTouchDown(sender: AnyObject) {
+        image.image = UIImage(named: "sample")
+    }
+    
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        let tmpImage = UIImage(named: "sample")
+        
+        let imageProcDefaultFilter = ImageProcessor(image: tmpImage!)
+        
+        image.image = imageProcDefaultFilter.applyFilter(filterType: .contrast)
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

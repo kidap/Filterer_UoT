@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,15 +19,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y0Y-vT-C70">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="83" y="28" width="434" height="411"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="411" id="Kmk-2K-usQ"/>
+                                </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQa-Eh-P8C">
+                                <rect key="frame" x="83" y="28" width="434" height="406"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="406" id="6rO-W8-UeP"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="imageTouchDown:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mJl-CS-VOW"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="y0Y-vT-C70" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="O0W-gJ-Sgd"/>
-                            <constraint firstItem="y0Y-vT-C70" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="SQ6-Q1-6Qj"/>
-                            <constraint firstItem="y0Y-vT-C70" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Wq8-Gh-hln"/>
-                            <constraint firstAttribute="trailing" secondItem="y0Y-vT-C70" secondAttribute="trailing" id="eZk-sQ-FOW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="y0Y-vT-C70" secondAttribute="trailing" constant="63" id="8BG-ap-0NN"/>
+                            <constraint firstItem="fQa-Eh-P8C" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Rux-aP-txM"/>
+                            <constraint firstItem="y0Y-vT-C70" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UEw-8F-oN4"/>
+                            <constraint firstItem="fQa-Eh-P8C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aos-gH-4hT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fQa-Eh-P8C" secondAttribute="trailing" constant="63" id="cQi-PE-Q4s"/>
+                            <constraint firstItem="y0Y-vT-C70" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="hBW-7Q-wol"/>
+                            <constraint firstItem="y0Y-vT-C70" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="63" id="oYe-7G-cW7"/>
+                            <constraint firstItem="fQa-Eh-P8C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="63" id="qMQ-aC-Xfg"/>
                         </constraints>
                     </view>
                     <connections>
