@@ -29,14 +29,25 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="406" id="6rO-W8-UeP"/>
                                 </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gub-q9-fo4">
+                                <rect key="frame" x="171" y="463" width="259" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Myr-W1-ooW"/>
+                                    <constraint firstAttribute="width" constant="259" id="cQd-Ao-lfb"/>
+                                </constraints>
+                                <state key="normal" title="Show filtered image"/>
+                                <state key="selected" title="Show original image"/>
                                 <connections>
-                                    <action selector="imageTouchDown:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mJl-CS-VOW"/>
+                                    <action selector="toggleImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7uL-hi-soc"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gub-q9-fo4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6Qj-rm-wIq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="y0Y-vT-C70" secondAttribute="trailing" constant="63" id="8BG-ap-0NN"/>
+                            <constraint firstItem="gub-q9-fo4" firstAttribute="top" secondItem="y0Y-vT-C70" secondAttribute="bottom" constant="24" id="DVQ-wy-ZVF"/>
                             <constraint firstItem="fQa-Eh-P8C" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Rux-aP-txM"/>
                             <constraint firstItem="y0Y-vT-C70" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UEw-8F-oN4"/>
                             <constraint firstItem="fQa-Eh-P8C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aos-gH-4hT"/>
@@ -48,6 +59,7 @@
                     </view>
                     <connections>
                         <outlet property="image" destination="y0Y-vT-C70" id="mbW-1R-Un0"/>
+                        <outlet property="toggleButton" destination="gub-q9-fo4" id="lLr-hr-7Es"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

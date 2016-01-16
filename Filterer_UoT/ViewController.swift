@@ -10,45 +10,29 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet var image: UIImageView!
+    @IBOutlet var toggleButton: UIButton!
 
-    @IBAction func imageTouchDown(sender: AnyObject) {
-        image.image = UIImage(named: "sample")
-    }
     
-    
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    @IBAction func toggleImage(sender: UIButton) {
         
-        let tmpImage = UIImage(named: "sample")
-        
-        let imageProcDefaultFilter = ImageProcessor(image: tmpImage!)
-        
-        image.image = imageProcDefaultFilter.applyFilter(filterType: .contrast)
+        if toggleButton.selected{
+            image.image = UIImage(named: "sample")
+            toggleButton.selected = false
+        } else {
+            
+            let tmpImage = UIImage(named: "sample")
+            let imageProcDefaultFilter = ImageProcessor(image: tmpImage!)
+            
+            image.image = imageProcDefaultFilter.applyFilter(filterType: .contrast)
+            toggleButton.selected = true
+        }
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
-        let tmpImage = UIImage(named: "sample")
-        
-        let imageProc = ImageProcessor(image: tmpImage!)
-        imageProc.applyFilter(filterType: filter.brightness, intensity: 100)
-        
-        let imageProcMultipleFilters = ImageProcessor(image: tmpImage!)
-        imageProcMultipleFilters.applyFilters(filterTypes: (type: .grayscale, intensity: 80),(type: .contrast, intensity: 80))
-        
-        
-        let imageProcDefaultFilter2 = ImageProcessor(image: tmpImage!)
-        imageProcDefaultFilter2.applyFilter(filterType: filter.contrast)
-        
-        
-        let imageProcDefaultFilter = ImageProcessor(image: tmpImage!)
-        
-        image.image = imageProcDefaultFilter.applyFilter(filterType: .contrast)
-        
-        
+        image.image = UIImage(named: "sample")
         
     }
 
