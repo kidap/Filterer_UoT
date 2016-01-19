@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     @IBOutlet var toggleButton: UIButton!
 
     
+    @IBOutlet var bottomMenu: UIView!
+    @IBOutlet var secondaryMenu: UIView!
+    @IBOutlet var filterButton: UIButton!
+    
     @IBAction func toggleImage(sender: UIButton) {
         
         if toggleButton.selected{
@@ -26,6 +30,38 @@ class ViewController: UIViewController {
             image.image = imageProcDefaultFilter.applyFilter(filterType: .contrast)
             toggleButton.selected = true
         }
+    }
+    @IBAction func onFilter(sender: UIButton) {
+        if sender.selected{
+            hideSecondaryMenu()
+            sender.selected = false
+        } else {
+            showSecondaryMenu()
+            sender.selected = true
+        }
+        
+    }
+    
+    func showSecondaryMenu(){
+        
+        view.addSubview(secondaryMenu)
+        secondaryMenu.translatesAutoresizingMaskIntoConstraints = false
+        
+        let bottomConstraint = secondaryMenu.bottomAnchor.constraintEqualToAnchor(bottomMenu.topAnchor)
+        let leftConstraint = secondaryMenu.leftAnchor.constraintEqualToAnchor(view.leftAnchor)
+        let rightConstraint = secondaryMenu.rightAnchor.constraintEqualToAnchor(view.rightAnchor)
+        let heightConstraint = secondaryMenu.heightAnchor.constraintEqualToConstant(44)
+        
+        NSLayoutConstraint.activateConstraints([bottomConstraint, leftConstraint, rightConstraint, heightConstraint])
+        
+        
+        view.layoutIfNeeded()
+        
+        secondaryMenu.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+    }
+    
+    func hideSecondaryMenu(){
+        secondaryMenu.removeFromSuperview()
     }
     
     override func viewDidLoad() {
