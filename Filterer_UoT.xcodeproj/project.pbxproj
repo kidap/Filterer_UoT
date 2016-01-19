@@ -15,6 +15,7 @@
 		A70608081C475ED900360CC2 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70608061C475ED900360CC2 /* ImageProcessor.swift */; };
 		A70608091C475ED900360CC2 /* RGBAImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70608071C475ED900360CC2 /* RGBAImage.swift */; };
 		A706080B1C475F9F00360CC2 /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = A706080A1C475F9F00360CC2 /* sample.png */; };
+		A757330F1C4DDFF30037B522 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A757330E1C4DDFF30037B522 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A70608061C475ED900360CC2 /* ImageProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
 		A70608071C475ED900360CC2 /* RGBAImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBAImage.swift; sourceTree = "<group>"; };
 		A706080A1C475F9F00360CC2 /* sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample.png; sourceTree = "<group>"; };
+		A757330E1C4DDFF30037B522 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				A70607F41C475E6400360CC2 /* AppDelegate.swift */,
 				A70607F61C475E6400360CC2 /* ViewController.swift */,
+				A757330E1C4DDFF30037B522 /* TableViewController.swift */,
 				A70607F81C475E6400360CC2 /* Main.storyboard */,
 				A70607FB1C475E6400360CC2 /* Assets.xcassets */,
 				A70607FD1C475E6400360CC2 /* LaunchScreen.storyboard */,
@@ -149,6 +152,7 @@
 				A70607F71C475E6400360CC2 /* ViewController.swift in Sources */,
 				A70608091C475ED900360CC2 /* RGBAImage.swift in Sources */,
 				A70608081C475ED900360CC2 /* ImageProcessor.swift in Sources */,
+				A757330F1C4DDFF30037B522 /* TableViewController.swift in Sources */,
 				A70607F51C475E6400360CC2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +303,7 @@
 				A70608051C475E6400360CC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
