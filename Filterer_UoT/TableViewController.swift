@@ -22,6 +22,8 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Done in storyboard
+        //tableView.delegate = self
         //tableView.dataSource = self
 
         // Do any additional setup after loading the view.
@@ -43,7 +45,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //print(filters[indexPath.row])
+        print(filters[indexPath.row])
         
     }
     

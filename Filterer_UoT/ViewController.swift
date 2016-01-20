@@ -8,31 +8,74 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var originalImage = UIImage()
+    
     @IBOutlet var image: UIImageView!
     @IBOutlet var toggleButton: UIButton!
-
-    
-    @IBOutlet var bottomMenu: UIView!
-    @IBOutlet var secondaryMenu: UIView!
+    @IBOutlet var bottomMenu: UIView! //Bottom menu on main view
+    @IBOutlet var secondaryMenu: UIView! //Showed when Filter button is clicked
     @IBOutlet var filterButton: UIButton!
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        image.image = UIImage(named: "sample")
+        originalImage = UIImage(named: "sample")!
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: Buttons
+    @IBAction func onShare(sender: AnyObject) {
+        if let sharedImage = self.image.image{
+        let activityController = UIActivityViewController(activityItems: [sharedImage], applicationActivities: nil)
+            
+            self.presentViewController(activityController, animated: true, completion: nil)
+        }
+    }
+
+    
+    @IBAction func onNewPhoto(sender: AnyObject) {
+        //Create action sheet to select the source of the image
+        let actionSheet = UIAlertController(title: "New Photo", message: nil, preferredStyle: .ActionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .Default, handler: { action in
+            self.showCamera()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Album", style: .Default, handler: { action in
+            self.showAlbum()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil ))
+        
+        //Display the action sheet
+        self.presentViewController(actionSheet, animated: true, completion: nil)
+    }
     @IBAction func toggleImage(sender: UIButton) {
         
         //Display original image
         if toggleButton.selected{
-            image.image = UIImage(named: "sample")
+            image.image = self.originalImage
             toggleButton.selected = false
             
-        //Display filtered image
+            //Display filtered image
         } else {
-            
-            let tmpImage = UIImage(named: "sample")
+            let tmpImage = image.image
             let imageProcDefaultFilter = ImageProcessor(image: tmpImage!)
             image.image = imageProcDefaultFilter.applyFilter(filterType: .contrast)
             toggleButton.selected = true
         }
     }
+    
     @IBAction func onFilter(sender: UIButton) {
         if sender.selected{
             hideSecondaryMenu()
@@ -44,6 +87,46 @@ class ViewController: UIViewController {
         
     }
     
+    
+    // MARK: Functions
+    func showCamera(){
+        print("Showing the camera")
+        let cameraPicker = UIImagePickerController()
+        
+        cameraPicker.delegate = self
+        cameraPicker.sourceType = .Camera
+        
+        self.presentViewController(cameraPicker, animated: true, completion: nil)
+    }
+    
+    func showAlbum(){
+        print("Showing the album")
+        let albumPicker = UIImagePickerController()
+        
+        albumPicker.delegate = self
+        albumPicker.sourceType = .PhotoLibrary
+        
+        self.presentViewController(albumPicker, animated: true, completion: nil)
+    }
+
+    
+    // MARK: Image Picker delegates
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            self.image.image = image
+            self.originalImage = image
+        }
+        
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    // MARK: Secondary Menu
     func showSecondaryMenu(){
         
         //Add secondary view to main view
@@ -84,23 +167,7 @@ class ViewController: UIViewController {
                     self.secondaryMenu.removeFromSuperview()
                 }
         }
-        
-        
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-
-        image.image = UIImage(named: "sample")
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
